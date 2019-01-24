@@ -11,9 +11,15 @@
     if (!PIXI.utils.isWebGLSupported()) {
       type = "canvas"
     }
-    PIXI.utils.sayHello(type)
+    PIXI.utils.sayHello(type
+    // Aliases
+    let application = PIXI.Application,
+        loader = PIXI.loader,
+        resources = PIXI.loader.resources,
+        Sprite = PIXI.Sprite;
+
     // # Creating a pixi application
-    let app = new PIXI.Application({
+    let app = new application({
       width: 800,
       height: 600,
       antialias: true,
@@ -25,14 +31,14 @@
     // Adding the canvas that pixi automatically created for me to the html document
     document.body.appendChild(app.view);
     //load an image and run the `setup` function when it's done
-    PIXI.loader
+    loader
       .add("images/setup.jpg")
       .load(setup);
 
       function setup() {
         //Create the setup(image) sprite
-        let sprite = new PIXI.Sprite(
-          PIXI.loader.resources['images/setup.jpg'].texture
+        let sprite = new Sprite(
+          resources['images/setup.jpg'].texture
         );
         // Add the setup to the stage
 
