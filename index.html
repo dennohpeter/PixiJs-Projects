@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>PixiJs Tutorial</title>
-    <script src="js/pixi.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      let type = "WebGl"
-      if (!PIXI.utils.isWebGlSupported()) {
-          type = "canvas"
+<head>
+  <meta charset="utf-8">
+  <title>PixiJs Tutorial</title>
+  <script src="js/pixi.js" charset="utf-8"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    let type = "WebGl"
+    if (!PIXI.utils.isWebGLSupported()) {
+      type = "canvas"
+    }
+    PIXI.utils.sayHello(type)
+    // # Creating a pixi application
+    let app = new PIXI.Application({
+      width: 800,
+      height: 600,
+      antialias: true,
+      transparent: false,
+      resolution: 1
+
+    }
+    );
+    // Adding the canvas that pixi automatically created for me to the html document
+    document.body.appendChild(app.view);
+    //load an image and run the `setup` function when it's done
+    PIXI.loader
+      .add("images/setup.jpg")
+      .load(setup);
+
+      function setup() {
+        //Create the setup(image) sprite
+        let sprite = new PIXI.Sprite(
+          PIXI.loader.resources['images/setup.jpg'].texture
+        );
+        // Add the setup to the stage
+
+        app.stage.addChild(sprite)
       }
-      PIXI.utils.sayHello(type)
-    </script>
-  </body>
+
+
+  </script>
+</body>
 </html>
