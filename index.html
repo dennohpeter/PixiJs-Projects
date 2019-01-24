@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PixiJs Tutorial</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let type = "WebGl"
+      if (!PIXI.utils.isWebGlSupported()) {
+          type = "canvas"
+      }
+      PIXI.utils.sayHello(type)
+    </script>
+    <script src="pixi.js" charset="utf-8"></script>
+  </body>
+</html>
